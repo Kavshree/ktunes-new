@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common'
 import { SidebarComponent } from './sidebar.component';
-import { CardCarouselComponent } from './cardcarousel.component';
+//import { CardCarouselComponent } from '../SongModule/cardcarousel.component';
 import { RouterModule } from '@angular/router';
-import { MainRoutes } from '../Routes/MasterRoutes'
+//import { MainRoutes } from '../Routes/MasterRoutes'
 
 @NgModule({
     imports: [CommonModule,
     RouterModule
     //RouterModule.forRoot(MainRoutes)
     ],   
-    declarations: [SidebarComponent,CardCarouselComponent],
-    exports: [SidebarComponent,CardCarouselComponent, RouterModule]
+    declarations: [SidebarComponent],
+    exports: [SidebarComponent]
 })
 
 export class UtilitiesModule {}
