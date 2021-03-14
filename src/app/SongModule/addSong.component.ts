@@ -5,11 +5,10 @@ import { Router } from '@angular/router';
 
 @Component({
     selector:  'add-song',
-    template: `<div class="row">
-       <hr class="ktunesLine" />
+    template: `<div>
        <div class="col-lg-12">
        <h3> Add song </h3>
-           
+       <hr class="ktunesLine" />
         <form [formGroup]="songForm">
         <div class="form-row">
         <div class="form-group col-md-3">
@@ -54,7 +53,7 @@ import { Router } from '@angular/router';
 export class AddSongComponent {
     constructor(private _service: KTuneService, private _fb: FormBuilder,private _router: Router) {}
     @ViewChild('fileInput') fileRef: any;
-    uploadedObj = {songname:"", singer:"", album: "",genre:""};
+    uploadedObj = {songname:"", singer:"", album: "",genre:"", songid:""};
     uploadedFiles = [];
     Genres;
     

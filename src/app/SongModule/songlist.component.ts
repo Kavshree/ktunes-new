@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { CardCarouselComponent } from './cardcarousel.component';
 import { Router } from '@angular/router';
 import  { KTuneService } from '../ktune.service';
@@ -21,15 +21,34 @@ import  { KTuneService } from '../ktune.service';
                 </section>
                 <div class="overlay text-center">
                 <p class="info cursor-pointer btn-group">
-                    <button class="btn" title="add to favourites"><i class="fa fa-heart-o fa-2x col-lg-2"></i></button>
-                    <button class="btn" title="Play"><i class="fa fa-play fa-2x col-lg-2"></i></button>
-                    <button class="btn" title="add to playlist"><i class="fa fa-plus fa-2x col-lg-2"></i></button>
+                    <button class="btn" title="add to favourites" (click)="addtoFav(song.id)">
+                        <i class="fa fa-heart-o fa-2x col-lg-2"></i>
+                    </button>
+                    <button class="btn" title="Play" (click)="play(song.id)">
+                        <i class="fa fa-play fa-2x col-lg-2"></i>
+                    </button>
+                    <button class="btn" title="add to playlist" (click)="addtoPlaylist(song.id)">
+                        <i class="fa fa-plus fa-2x col-lg-2"></i>
+                    </button>
                 </p>
                 </div>
                 
 
             </div>
         </div>
+    </div>
+
+    <div>
+
+    <div class="card">
+    <div class="card-body">
+    <p class="col-lg-3 ktunes-font"><marquee onmouseover="this.stop();" onmouseout="this.start();">Playing: {{currSong.songname}} | Singer: {{currSong.singer}}</marquee></p>
+    <audio controls class= "audio" #player width="100%" height="30">
+        <source src="http://listen.vo.llnwd.net/g3/prvw/4/7/1/4/6/2283564174.mp3" type="audio/mpeg">
+    </audio>
+    </div> <!--card-body-->
+    </div>
+
     </div>
 
     <!--<div *ngFor="let v of views">
@@ -41,12 +60,14 @@ import  { KTuneService } from '../ktune.service';
     styles: [`
         .btn .fa-heart-o:hover {color:red;}
         .btn .fa-play:hover, .btn .fa-plus:hover{color: #00bc8c;}
+        audio{width: 100%;}
     `]
 })
 
 export class SongListComponent{
     constructor(private _router: Router, private _service: KTuneService) {}
-    songListData;
+    @ViewChild('player') playerRef: ElementRef;
+    songListData; currSong;
     ngOnInit() {
         this._service.getSongs().subscribe(res => {
             this.songListData = res;
@@ -59,5 +80,23 @@ export class SongListComponent{
 
     addSong() {
         this._router.navigate(['/SongList/addSong'])
+    }
+
+    addtoFav(id) {
+
+    }
+
+    play(id) {
+        this._service.getSongFromID(id).subscribe(res => {
+            this.currSong = res[0];
+            console.log(this.playerRef.nativeElement)
+        })
+    }
+
+    addtoPlaylist(id) {
+        let playListObj = {"songID": id}
+        this._service.postPlayList(playListObj).subscribe(res => {
+            alert(`Posted to play list`)
+        })
     }
 }

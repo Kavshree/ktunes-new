@@ -1,14 +1,4 @@
 {
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  },
   "genres": [
     "Rock Music",
     "Hip-hop",
@@ -39,6 +29,19 @@
       "album": "Impossible Dream",
       "genre": "Indie Rock",
       "id": 4
+    },
+    {
+      "songname": "Sam Smith, Normani - Dancing With A Stranger",
+      "singer": "Sam Smith",
+      "album": "Stranger Dancing",
+      "genre": "Hip-hop",
+      "id": 5
+    }
+  ],
+  "playList": [
+    {
+      "songID": 2,
+      "id": 1
     }
   ]
 }
