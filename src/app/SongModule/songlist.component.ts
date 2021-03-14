@@ -42,7 +42,8 @@ import  { KTuneService } from '../ktune.service';
 
     <div class="card">
     <div class="card-body">
-    <p class="col-lg-3 ktunes-font"><marquee onmouseover="this.stop();" onmouseout="this.start();">Playing: {{currSong.songname}} | Singer: {{currSong.singer}}</marquee></p>
+    <p *ngIf="currSong.songname !== '' " class="col-lg-3 ktunes-font">
+    <marquee onmouseover="this.stop();" onmouseout="this.start();">Playing: {{currSong?.songname}} | Singer: {{currSong?.singer}}</marquee></p>
     <audio controls class= "audio" #player width="100%" height="30">
         <source src="http://listen.vo.llnwd.net/g3/prvw/4/7/1/4/6/2283564174.mp3" type="audio/mpeg">
     </audio>
@@ -67,7 +68,7 @@ import  { KTuneService } from '../ktune.service';
 export class SongListComponent{
     constructor(private _router: Router, private _service: KTuneService) {}
     @ViewChild('player') playerRef: ElementRef;
-    songListData; currSong;
+    songListData; currSong={songname:"", singer:"", album: "",genre:"", songid:""};
     ngOnInit() {
         this._service.getSongs().subscribe(res => {
             this.songListData = res;
