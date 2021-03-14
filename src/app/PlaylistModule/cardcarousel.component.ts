@@ -1,7 +1,7 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 
 @Component({
-    selector: 'card-carousel',
+    selector: 'carousel-card',
     template:  `
     <div class="d-flex justify-content-end">
         <span id="left-btn" (click)="leftBtnClick($event)" #leftBtnRef><i class="fa fa-lg fa-chevron-left"></i></span>

@@ -47,14 +47,18 @@
   ],
   "playList": [
     {
-      "songID": 6,
+      "songID": 4,
+      "playListName": "Playlist-1",
       "id": 1
     },
     {
-      "songID": 4,
+      "songID": 3,
+      "playListName": "Playlist-2",
       "id": 2
     },
     {
+      "songID": 2,
+      "playListName": "Playlist-2",
       "id": 3
     }
   ]

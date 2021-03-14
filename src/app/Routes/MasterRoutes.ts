@@ -8,8 +8,8 @@ export const MainRoutes = [
     //{path: 'SongList', component: SongListComponent },
     {path: 'SongList', loadChildren: () => import('../SongModule/song.module').then(m => m.SongModule)},
     //loadChildren: () => import('../SongModule/song.module').then(m => m.SongModule)},
-   // {path: 'PlayList', loadChildren: () => import('../PlaylistModule/playlist.module').then(m => m.PlayListModule)},
-    {path: 'playList', component: PlayListComponent},
+    {path: 'playList', loadChildren: () => import('../PlaylistModule/playlist.module').then(m => m.PlayListModule)},
+   // {path: 'playList', component: PlayListComponent},
     {path: '', redirectTo: '/About', pathMatch: 'full'},
     {path: '**', component: PageNotFoundComponent}
 ]

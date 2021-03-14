@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { CardCarouselComponent } from './cardcarousel.component';
+//import { CardCarouselComponent } from '../PlaylistModule/cardcarousel.component';
 import { Router } from '@angular/router';
 import  { KTuneService } from '../ktune.service';
 
@@ -93,7 +93,7 @@ export class SongListComponent{
     }
 
     addtoPlaylist(id) {
-        let playListObj = {"songID": id}
+        let playListObj = {"songID": id, "playListName": "Playlist-1"}
         this._service.postPlayList(playListObj).subscribe(res => {
             alert(`Posted to play list`)
         })
