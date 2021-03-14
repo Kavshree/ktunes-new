@@ -22,7 +22,6 @@ import { Router } from '@angular/router';
             <label>Album</label>
             <input type="text" class="form-control" placeholder="Album" formControlName="album">
             </div>
-            
         </div>
 
         <div class="form-row">
@@ -42,7 +41,7 @@ import { Router } from '@angular/router';
             </div>
         </div>
 
-        <button class="btn btn-ktunes" (click)="submitSong()"> Submit </button>
+        <button class="btn btn-ktunes" (click)="submitSong()" [disabled]="songForm.invalid" > Submit </button>
     </form>
 
 </div>
@@ -86,7 +85,7 @@ export class AddSongComponent {
 
     submitSong() {
         alert(this.songForm.status);
-        console.log(this.songForm.value);
+        console.log(this.songForm.get('singer'));
         if(this.songForm.status.toUpperCase() == "VALID") {
             this._service.postSong(this.songForm.value).subscribe(res => {
                 console.log(res);

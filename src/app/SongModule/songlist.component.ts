@@ -10,10 +10,8 @@ import  { KTuneService } from '../ktune.service';
     <hr class="ktunesLine" />
     <div class="card-columns card-deck">
         <div class="card mb-3" style="min-width: 18rem;" *ngFor="let song of songListData">
-            <div class="card-header">{{song.songname}}</div>
+            <div class="card-header" [ngClass]="song.id == currID ? 'active-card' : '' ">{{song.songname}}</div>
             <div class="card-body">
-
-
                 <h5 class="card-title"><label>Singer:</label> {{song.singer}}</h5>
                 <section class="card-text">
                     <p><label>Album: </label> {{song.album}}</p>
@@ -32,14 +30,12 @@ import  { KTuneService } from '../ktune.service';
                     </button>
                 </p>
                 </div>
-                
-
             </div>
         </div>
     </div>
+    
 
     <div>
-
     <div class="card">
     <div class="card-body">
     <p *ngIf="currSong.songname !== '' " class="col-lg-3 ktunes-font">
@@ -62,13 +58,14 @@ import  { KTuneService } from '../ktune.service';
         .btn .fa-heart-o:hover {color:red;}
         .btn .fa-play:hover, .btn .fa-plus:hover{color: #00bc8c;}
         audio{width: 100%;}
+        .active-card {background-color: #00bc8c; }
     `]
 })
 
 export class SongListComponent{
     constructor(private _router: Router, private _service: KTuneService) {}
-    @ViewChild('player') playerRef: ElementRef;
-    songListData; currSong={songname:"", singer:"", album: "",genre:"", songid:""};
+    @ViewChild('player') playerRef: ElementRef; currID=0;
+    songListData; currSong={songname:"", singer:"", album: "",genre:"", songid:"", id:""};
     ngOnInit() {
         this._service.getSongs().subscribe(res => {
             this.songListData = res;
@@ -88,6 +85,7 @@ export class SongListComponent{
     }
 
     play(id) {
+        this.currID = id;
         this._service.getSongFromID(id).subscribe(res => {
             this.currSong = res[0];
             console.log(this.playerRef.nativeElement)

@@ -7,9 +7,10 @@ import { UtilitiesModule } from '../UtilitiesModule/utilities.module';
 import { SongListComponent } from './songlist.component';
 import { AddSongComponent } from './addSong.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgbModule, NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 
 @NgModule({
-    imports: [CommonModule, ReactiveFormsModule, RouterModule.forChild(songRoutes) ],
+    imports: [CommonModule, ReactiveFormsModule, RouterModule.forChild(songRoutes),NgbModule ],
     declarations: [CardCarouselComponent, SongListComponent, AddSongComponent],
     exports: []
 })

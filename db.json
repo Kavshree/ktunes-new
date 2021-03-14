@@ -36,12 +36,26 @@
       "album": "Stranger Dancing",
       "genre": "Hip-hop",
       "id": 5
+    },
+    {
+      "songname": "Ellie Goulding - Love Me Like You Do (Acoustic) (Acoustic)",
+      "singer": "Ellie Goulding",
+      "album": "Shades",
+      "genre": "K-pop",
+      "id": 6
     }
   ],
   "playList": [
     {
-      "songID": 2,
+      "songID": 6,
       "id": 1
+    },
+    {
+      "songID": 4,
+      "id": 2
+    },
+    {
+      "id": 3
     }
   ]
 }

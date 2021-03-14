@@ -17,6 +17,10 @@ export class KTuneService {
         return this._http.get(`http://localhost:3000/songs`);
     }
 
+    getPlayList() {
+        return this._http.get(`http://localhost:3000/playList`)
+    }
+
     postPlayList(obj) {
         return this._http.post(`http://localhost:3000/playList`, obj)
     }

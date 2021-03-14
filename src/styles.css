@@ -1,6 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 @import url("darkTheme.css");
 
+
+/*@import "~bootstrap/dist/css/bootstrap.css";*/
+
 #wrapper{width:100%;}
 .btn-ktunes{background-color: #00bc8c;}
 .ktunes-font{color: #00bc8c;}

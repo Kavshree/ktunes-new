@@ -8,7 +8,7 @@ import { Component, Input } from '@angular/core';
     <div class="list-group list-group-flush">
       <a [routerLink]="['/About']" class="list-group-item list-group-item-action"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
       <a [routerLink]="['/SongList']" class="list-group-item list-group-item-action"><i class="fa fa-globe" aria-hidden="true"></i> Songs</a>
-      <a href="#" class="list-group-item list-group-item-action"><i class="fa fa fa-heart-o" aria-hidden="true"></i> My Playlists</a>
+      <a [routerLink]="['/playList']" class="list-group-item list-group-item-action"><i class="fa fa fa-heart-o" aria-hidden="true"></i> My Playlists</a>
       <a href="#" class="list-group-item list-group-item-action"><i class="fa fa-book" aria-hidden="true"></i> Albums</a>
       <a href="#" class="list-group-item list-group-item-action"><i class="fa fa-plus-circle" aria-hidden="true"></i> New Playlist</a>
       <a href="#" class="list-group-item list-group-item-action">Status</a>
