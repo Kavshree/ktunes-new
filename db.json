@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "genres": [
+    "Rock Music",
+    "Hip-hop",
+    "Jazz",
+    "K-pop",
+    "Country",
+    "Indie Rock",
+    "Dubstep"
+  ],
+  "songs": [
+    {
+      "id": 2,
+      "songname": "Fight Song",
+      "singer": "Rachel",
+      "album": "Fight",
+      "genre": "Country"
+    },
+    {
+      "songname": "GODDESS - KREWELLA x NERVO feat",
+      "singer": "Raja kumari",
+      "album": "Goddess",
+      "genre": "Indie Rock",
+      "id": 3
+    },
+    {
+      "songname": "Il Divo - The Impossible Dream (live)",
+      "singer": "Divo",
+      "album": "Impossible Dream",
+      "genre": "Indie Rock",
+      "id": 4
+    }
+  ]
+}

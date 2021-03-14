@@ -4,11 +4,13 @@ import { RouterModule } from '@angular/router';
 import { songRoutes } from '../Routes/song.route';
 import { CardCarouselComponent } from './cardcarousel.component';
 import { UtilitiesModule } from '../UtilitiesModule/utilities.module';
-import { SongListComponent } from './songlist.component'
+import { SongListComponent } from './songlist.component';
+import { AddSongComponent } from './addSong.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-    imports: [CommonModule, RouterModule.forChild(songRoutes) ],
-    declarations: [CardCarouselComponent, SongListComponent],
+    imports: [CommonModule, ReactiveFormsModule, RouterModule.forChild(songRoutes) ],
+    declarations: [CardCarouselComponent, SongListComponent, AddSongComponent],
     exports: []
 })
 

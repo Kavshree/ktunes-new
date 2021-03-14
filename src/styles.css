@@ -2,3 +2,5 @@
 @import url("darkTheme.css");
 
 #wrapper{width:100%;}
+.btn-ktunes{background-color: #00bc8c;}
+hr.ktunesLine {background-color: #00bc8c; }
