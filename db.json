@@ -43,6 +43,27 @@
       "album": "Shades",
       "genre": "K-pop",
       "id": 6
+    },
+    {
+      "songname": "Sam Smith, Normani - Dancing With A Stranger - Copy",
+      "singer": "sdsdsdsd",
+      "album": "ssdsd",
+      "genre": "Indie Rock",
+      "id": 7
+    },
+    {
+      "songname": "Sam Smith, Normani - Dancing With A Stranger",
+      "singer": "fgh",
+      "album": "gfh",
+      "genre": "Hip-hop",
+      "id": 8
+    },
+    {
+      "songname": "GODDESS - KREWELLA x NERVO feat",
+      "singer": "yu",
+      "album": "uyt",
+      "genre": "Jazz",
+      "id": 9
     }
   ],
   "playList": [
@@ -52,19 +73,24 @@
       "id": 1
     },
     {
-      "songID": 3,
-      "playListName": "Playlist-2",
+      "songID": 2,
+      "playListName": "kavya",
       "id": 2
     },
     {
-      "songID": 2,
-      "playListName": "Playlist-2",
+      "songID": 3,
+      "playListName": "kavya",
       "id": 3
     },
     {
-      "songID": 6,
-      "playListName": "Playlist-1",
+      "songID": 2,
+      "playListName": "kavya",
       "id": 4
+    },
+    {
+      "songID": 9,
+      "playListName": "dungu",
+      "id": 5
     }
   ]
 }
