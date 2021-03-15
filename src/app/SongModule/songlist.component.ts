@@ -7,8 +7,25 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 @Component({
     selector: 'song-list',
     template: `<div>
-    <h3>Song List <button class="btn btn-ktunes float-right" (click)="addSong()">Add song</button></h3>
+    <h3>Song List 
+    <button class="btn btn-ktunes float-right" (click)="addSong()">Add song</button>
+    </h3>
     <hr class="ktunesLine" />
+
+    <div class="row mb-3">
+    <div class="col-lg-3 col-md-6 col-sm-12 ">
+    <div class="input-group">
+    <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
+    </div>
+    <div class="input-group-prepend">
+        <select [(ngModel)]="searchField">
+            <option *ngFor="let item of searchFields">{{item}}</option>
+        </select>
+    </div>
+    <input type="text" class="form-control" placeholder="Search" (keydown.enter)="search(searchField, $event.target.value)">
+    </div></div></div>
+
     <div class="card-columns card-deck">
         <div class="card mb-3" style="min-width: 18rem;" *ngFor="let song of songListData">
             <div class="card-header" [ngClass]="song.id == currID ? 'active-card' : '' ">{{song.songname}}</div>
@@ -100,9 +117,17 @@ export class SongListComponent{
     @ViewChild('player') playerRef: ElementRef; currID=0;
     @ViewChild('content') content: ElementRef;
     songListData; currSong={songname:"", singer:"", album: "",genre:"", songid:"", id:""};
+    searchFields=[]; searchField;
     ngOnInit() {
         this._service.getSongs().subscribe(res => {
             this.songListData = res;
+            let songObjArr=this.songListData[0]; let arr=[]
+            if(songObjArr) {
+                Object.keys(songObjArr).forEach(function(k){
+                    if( k != 'id') arr.push(k)
+                })
+                this.searchFields=arr;
+            }
         })
         
     }
@@ -122,7 +147,7 @@ export class SongListComponent{
         this.currID = id;
         this._service.getSongFromID(id).subscribe(res => {
             this.currSong = res[0];
-            console.log(this.playerRef.nativeElement)
+            console.log(this.playerRef.nativeElement.play())
         })
     }
 
@@ -179,5 +204,12 @@ export class SongListComponent{
         } else {
           return `with: ${reason}`;
         }
+      }
+
+      search(field,val) {
+          this._service.getSongSearch(field,val).subscribe(res => {
+              console.log(res);
+              this.songListData = res;
+          })
       }
 }

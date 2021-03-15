@@ -28,4 +28,9 @@ export class KTuneService {
     getSongFromID(id) {
         return this._http.get(`http://localhost:3000/songs?id=${id}`);
     }
+
+    /**Search */
+    getSongSearch(field, val) {
+        return this._http.get(`http://localhost:3000/songs?${field}_like=${val}`);
+    }
 }
