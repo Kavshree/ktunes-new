@@ -8,7 +8,7 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
     selector: 'play-list',
     template: `<div>
     <div class="col-lg-12">
-    <h3> Playlist </h3>
+    <h3> Playlist <button class="btn btn-ktunes float-right" [routerLink]='["addPlaylist"]'>Create Playlist</button> </h3>
     <hr class="ktunesLine" />
 
     <div class="card-columns card-deck">
@@ -27,25 +27,6 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 
 
-
-
-
-        <div  id="div1" 
-        (drop)="drop($event)" 
-        (dragover)="allowDrop($event)">
-            <img 
-            src="https://images.pexels.com/photos/658687/pexels-photo-658687.jpeg?auto=compress&cs=tinysrgb&h=350" 
-            draggable="true" 
-            (dragstart)="drag($event)" 
-            id="drag1"
-            width="88" 
-            height="31">
-        </div>
-
-        <div id="div2" 
-        (drop)="drop($event)" 
-        (dragover)="allowDrop($event)">
-        </div>
     </div>
     </div>
     
@@ -76,11 +57,7 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
     <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
   </div>
 </ng-template>
-<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button>
 
-<hr>
-
-<pre>{{ closeResult }}</pre>
 `,
     styles: [`
     #div1, #div2 {
@@ -98,36 +75,38 @@ export class PlayListComponent {
     response; playListData=[];allSongs;;
     playListBlueprint={"playListName":"", "PlayListSongs":[]};
     constructor(private _service: KTuneService, private modalService: NgbModal) {}
-    ngOnInit() {
 
+    ngOnInit() {
         this._service.getSongs().subscribe(res => {
             this.allSongs = res;
+            this.getPlaylists();
         })
-
-        this._service.getPlayList().subscribe(res => {
-            this.response=res;
-            //console.log(res);
-
-            for(var i=0;i<this.response.length;i++) {
-                let present = this.isPlaydataContainsPlaylist(this.response[i].playListName);
-                let sName = this.getSongDetailsFromID(this.response[i].songID, "songname");
-                 console.log(sName)
-
-                if(present == -1) {
-                 this.playListBlueprint.playListName = this.response[i].playListName;
-                 this.playListBlueprint.PlayListSongs.push({ "songID": this.response[i].songID, "songname": sName} );
-                this.playListData.push(this.playListBlueprint);
-                } else {
-                    this.playListData[present].PlayListSongs.push({ "songID": this.response[i].songID, "songname": sName});
-                }
-                
-                this.playListBlueprint={"playListName":"", "PlayListSongs":[]};
-            }
-            console.log(this.playListData)
-            
-        })
-        
     } //ngOnInit
+
+    getPlaylists() {
+      this._service.getPlayList().subscribe(res => {
+        this.response=res;
+        //console.log(res);
+
+        for(var i=0;i<this.response.length;i++) {
+            let present = this.isPlaydataContainsPlaylist(this.response[i].playListName);
+            let sName = this.getSongDetailsFromID(this.response[i].songID, "songname");
+             console.log(sName)
+
+            if(present == -1) {
+             this.playListBlueprint.playListName = this.response[i].playListName;
+             this.playListBlueprint.PlayListSongs.push({ "songID": this.response[i].songID, "songname": sName} );
+            this.playListData.push(this.playListBlueprint);
+            } else {
+                this.playListData[present].PlayListSongs.push({ "songID": this.response[i].songID, "songname": sName});
+            }
+            
+            this.playListBlueprint={"playListName":"", "PlayListSongs":[]};
+        }
+        console.log(this.playListData)
+        
+    })
+    }
 
     isPlaydataContainsPlaylist(listName) {
         let indexVal=-1;
@@ -150,25 +129,6 @@ export class PlayListComponent {
         }
         return songFromID;
     }
-
-
-
-
-    drop(ev) {
-        ev.preventDefault();
-        console.log(ev.dataTransfer.getData("text"))
-        var data = ev.dataTransfer.getData("text");
-        ev.target.appendChild(document.getElementById(data));
-        
-      }
-    
-      allowDrop(ev) {
-        ev.preventDefault();
-      }
-    
-      drag(ev) {
-        ev.dataTransfer.setData("text", ev.target.id);
-      }
 
       closeResult = '';
       open(content) {
