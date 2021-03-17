@@ -18,6 +18,7 @@ import { KTuneService } from '../ktune.service'
         <label for="formGroupExampleInput2">Password</label>
         <input type="text" class="form-control" placeholder="Password"  formControlName="password">
       </div>
+      <div class="alert alert-danger" role="alert" *ngIf="errormsg">{{errormsg}}</div>
       <p class="text-muted">Not a member? <a [routerLink]="['/Register']">Register</a></p>
       <button class="btn btn-block btn-ktunes" type="submit" (click)="submit()">Sign in</button>
     </form>   
@@ -42,6 +43,7 @@ import { KTuneService } from '../ktune.service'
 })
 
 export class LoginComponent{
+    errormsg=null;
     constructor(private _service: KTuneService, private _fb: FormBuilder,private _router: Router){}
     loginForm = this._fb.group({
         email: ['', Validators.required],
@@ -54,9 +56,9 @@ export class LoginComponent{
         this._service.getUser(emailEntered).subscribe(res => {
             let returnedData = res;
             if(returnedData[0]?.password && returnedData[0]?.password != this.loginForm.get('password').value) {
-                alert("Password Incorrect")
+                this.errormsg = "Password Incorrect";
             } else if(!returnedData[0]?.password) {
-                alert("Account Not Registered")
+               this.errormsg="Account Not Registered";
             } else if(returnedData[0]?.password && returnedData[0]?.password == this.loginForm.get('password').value) {
                 alert("login successful!")
             }

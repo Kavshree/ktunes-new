@@ -142,6 +142,15 @@
       "location": "kuyf",
       "mobilenum": "6473950840",
       "id": 1
+    },
+    {
+      "email": "sv.chakravarthy@gmail.com",
+      "password": "gundwa",
+      "fname": "Srivatsa",
+      "lname": "Chakravarthy",
+      "location": "Toronto",
+      "mobilenum": "4373334690",
+      "id": 2
     }
   ]
 }
