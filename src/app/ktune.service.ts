@@ -33,4 +33,13 @@ export class KTuneService {
     getSongSearch(field, val) {
         return this._http.get(`http://localhost:3000/songs?${field}_like=${val}`);
     }
+
+    /**User Registration */
+    postUserRegistration(obj) {
+        return this._http.post(`http://localhost:3000/Registration`, obj)
+    }
+
+    getUser(emailObj) {
+        return this._http.get(`http://localhost:3000/Registration?email=${emailObj}`);
+    }
 }

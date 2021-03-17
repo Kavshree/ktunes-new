@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http'
 import { UtilitiesModule } from './UtilitiesModule/utilities.module';
+import { UserModule } from './UserModule/User.module';
 
 
 import { AppComponent } from './app.component';
@@ -20,6 +21,7 @@ import { KTuneService } from './ktune.service';
     HttpClientModule,
     NgbModule,
     UtilitiesModule,
+    UserModule,
     RouterModule.forRoot(MainRoutes)
   ],
   providers: [KTuneService],
