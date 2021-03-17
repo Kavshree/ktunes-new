@@ -12,6 +12,7 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
     </h3>
     <hr class="ktunesLine" />
 
+    <!-- search -->
     <div class="row mb-3">
     <div class="col-lg-3 col-md-6 col-sm-12 ">
     <div class="input-group">
@@ -23,9 +24,10 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
             <option *ngFor="let item of searchFields">{{item}}</option>
         </select>
     </div>
-    <input type="text" class="form-control" placeholder="Search" (keydown.enter)="search(searchField, $event.target.value)">
+    <input type="text" class="form-control" placeholder="Search" (keydown.enter)="search(searchField, $event.target)">
     </div></div></div>
-
+    <!-- search -->
+    
     <div class="card-columns card-deck">
         <div class="card mb-3" style="min-width: 18rem;" *ngFor="let song of songListData">
             <div class="card-header" [ngClass]="song.id == currID ? 'active-card' : '' ">{{song.songname}}</div>
@@ -117,7 +119,7 @@ export class SongListComponent{
     @ViewChild('player') playerRef: ElementRef; currID=0;
     @ViewChild('content') content: ElementRef;
     songListData; currSong={songname:"", singer:"", album: "",genre:"", songid:"", id:""};
-    searchFields=[]; searchField;
+    searchFields=[]; searchField="songname";
     ngOnInit() {
         this._service.getSongs().subscribe(res => {
             this.songListData = res;
@@ -207,7 +209,8 @@ export class SongListComponent{
       }
 
       search(field,val) {
-          this._service.getSongSearch(field,val).subscribe(res => {
+          let searchVal = val.value;
+          this._service.getSongSearch(field,searchVal).subscribe(res => {
               console.log(res);
               this.songListData = res;
           })

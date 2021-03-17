@@ -11,6 +11,7 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
     <h3> Playlist <button class="btn btn-ktunes float-right" [routerLink]='["addPlaylist"]'>Create Playlist</button> </h3>
     <hr class="ktunesLine" />
 
+
     <div class="card-columns card-deck">
         <div class="card mb-3" style="min-width: 18rem;" *ngFor="let play of playListData">
             <div class="card-header">{{play.playListName | uppercase }}</div>
