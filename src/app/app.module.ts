@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MainRoutes } from './Routes/MasterRoutes';
 import { KTuneService } from './ktune.service';
+import { AuthGuardConfirmation } from './formAuth.confirm';
 
 
 @NgModule({
@@ -24,7 +25,7 @@ import { KTuneService } from './ktune.service';
     UserModule,
     RouterModule.forRoot(MainRoutes)
   ],
-  providers: [KTuneService],
+  providers: [KTuneService, AuthGuardConfirmation],
   bootstrap: [AppComponent],
   exports: []
 })

@@ -1,6 +1,8 @@
 import { SongListComponent } from '../SongModule/songlist.component';
 import { AddSongComponent } from '../SongModule/addSong.component';
+import { AuthGuardConfirmation } from '../formAuth.confirm';
+
 export const songRoutes = [
     {path: '', component: SongListComponent},
-    {path: 'addSong', component: AddSongComponent}
+    {path: 'addSong', component: AddSongComponent, canDeactivate: [AuthGuardConfirmation]}
 ]
