@@ -30,7 +30,9 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
     
     <div class="card-columns card-deck">
         <div class="card mb-3" style="min-width: 18rem;" *ngFor="let song of songListData">
-            <div class="card-header" [ngClass]="song.id == currID ? 'active-card' : '' ">{{song.songname}}</div>
+            <div class="card-header" [ngClass]="song.id == currID ? 'active-card' : '' ">{{song.songname}} 
+                <a class="pull-right" [routerLink]="['/SongList/editSong/', song.id]"><i class="fa fa-pencil"></i></a>
+            </div>
             <div class="card-body">
                 <h5 class="card-title"><label>Singer:</label> {{song.singer}}</h5>
                 <section class="card-text">

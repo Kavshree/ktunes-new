@@ -13,6 +13,10 @@ export class KTuneService {
         return this._http.post(`http://localhost:3000/songs`, obj)
     }
 
+    editSong(id,obj) {
+        return this._http.put(`http://localhost:3000/songs/${id}`, obj)
+    }
+
     getSongs() {
         return this._http.get(`http://localhost:3000/songs`);
     }

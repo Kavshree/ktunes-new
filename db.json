@@ -10,11 +10,11 @@
   ],
   "songs": [
     {
-      "id": 2,
       "songname": "Fight Song",
       "singer": "Rachel",
-      "album": "Fight",
-      "genre": "Country"
+      "album": "CHANGED",
+      "genre": "Country",
+      "id": 2
     },
     {
       "songname": "GODDESS - KREWELLA x NERVO feat",
@@ -162,14 +162,5 @@
       "id": 3
     }
   ],
-  "CurrentUser": [
-    {
-      "currUser": 2,
-      "id": 2
-    },
-    {
-      "currUser": 3,
-      "id": 3
-    }
-  ]
+  "CurrentUser": []
 }
