@@ -67,7 +67,7 @@ export class EditSongComponent {
 
     loadFormData() {
         console.log(this.currentEditSong)
-       this.songForm.controls['songname'].setValue(this.currentEditSong.songname);
+       //this.songForm.controls['songname'].setValue(this.currentEditSong.songname);
        this.songForm.controls['singer'].setValue(this.currentEditSong.singer);
        this.songForm.controls['album'].setValue(this.currentEditSong.album);
        this.songForm.controls['genre'].setValue(this.currentEditSong.genre);
