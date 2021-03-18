@@ -63,8 +63,6 @@ export class LoginComponent{
               
               this._service.setCurrentUser({currUser: returnedData[0]?.id}).subscribe(setcurrres => {
                 alert("login successful!");
-                let val = returnedData[0].id;
-                localStorage.setItem("currUser", JSON.stringify(val) )
               });
             }
         })
