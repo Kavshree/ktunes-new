@@ -17,9 +17,10 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
             <div class="card-header">{{play.playListName | uppercase }}</div>
         <div class="flex-nowrap">
             <div class="list-group" *ngFor="let p of play.PlayListSongs">
-                <div class="list-group-item">
+                <div class="list-group-item" *ngIf="p.songname">
                    <p>Song {{p.songname}} {{p.songID}}</p>
                    <p class="text-muted"> Album: {{ getSongDetailsFromID(p.songID, "album") }} </p>
+                   
                 </div>
             </div>
         </div>
@@ -94,13 +95,22 @@ export class PlayListComponent {
             let sName = this.getSongDetailsFromID(this.response[i].songID, "songname");
              console.log(sName)
 
-            if(present == -1) {
+            // if(sName) {
+              if(present == -1) {
+                this.playListBlueprint.playListName = this.response[i].playListName;
+                this.playListBlueprint.PlayListSongs.push({ "songID": this.response[i].songID, "songname": sName} );
+               this.playListData.push(this.playListBlueprint);
+               } else {
+                   this.playListData[present].PlayListSongs.push({ "songID": this.response[i].songID, "songname": sName});
+               }
+            // }
+            /*if(present == -1) {
              this.playListBlueprint.playListName = this.response[i].playListName;
              this.playListBlueprint.PlayListSongs.push({ "songID": this.response[i].songID, "songname": sName} );
             this.playListData.push(this.playListBlueprint);
             } else {
                 this.playListData[present].PlayListSongs.push({ "songID": this.response[i].songID, "songname": sName});
-            }
+            }*/
             
             this.playListBlueprint={"playListName":"", "PlayListSongs":[]};
         }

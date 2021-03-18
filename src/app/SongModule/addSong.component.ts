@@ -95,9 +95,7 @@ export class AddSongComponent {
                 console.log(res);
                 this._router.navigate(['/SongList'])
             })
-        } else if(this.songForm.status.toUpperCase() == "INVALID" && this.songForm.touched){
-            this._router.navigate(['/SongList'])
-        }
+        } 
     }
 
 }

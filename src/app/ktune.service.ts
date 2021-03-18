@@ -17,6 +17,10 @@ export class KTuneService {
         return this._http.put(`http://localhost:3000/songs/${id}`, obj)
     }
 
+    deleteSong(id) {
+        return this._http.delete(`http://localhost:3000/songs/${id}`)
+    }
+
     getSongs() {
         return this._http.get(`http://localhost:3000/songs`);
     }

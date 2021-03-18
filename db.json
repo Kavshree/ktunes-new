@@ -10,60 +10,18 @@
   ],
   "songs": [
     {
-      "songname": "Sam Smith, Normani - Dancing With A Stranger",
-      "singer": "Rachel",
-      "album": "NEW SAM",
-      "genre": "Country",
-      "id": 2
-    },
-    {
-      "songname": "GODDESS - KREWELLA x NERVO feat",
-      "singer": "Raja kumari",
-      "album": "Goddess",
-      "genre": "Indie Rock",
-      "id": 3
-    },
-    {
-      "songname": "Il Divo - The Impossible Dream (live)",
-      "singer": "Divo",
-      "album": "Impossible Dream",
-      "genre": "Indie Rock",
-      "id": 4
-    },
-    {
-      "songname": "Sam Smith, Normani - Dancing With A Stranger",
-      "singer": "Sam Smith",
-      "album": "Stranger Dancing",
-      "genre": "Hip-hop",
-      "id": 5
-    },
-    {
-      "songname": "Ellie Goulding - Love Me Like You Do (Acoustic) (Acoustic)",
-      "singer": "Ellie Goulding",
-      "album": "Shades",
-      "genre": "K-pop",
-      "id": 6
-    },
-    {
-      "songname": "Sam Smith, Normani - Dancing With A Stranger - Copy",
-      "singer": "sdsdsdsd",
-      "album": "ssdsd",
-      "genre": "Indie Rock",
-      "id": 7
-    },
-    {
-      "songname": "Sam Smith, Normani - Dancing With A Stranger",
-      "singer": "fgh",
-      "album": "gfh",
-      "genre": "Hip-hop",
-      "id": 8
-    },
-    {
       "songname": "GODDESS - KREWELLA x NERVO feat",
       "singer": "yu",
       "album": "uyt",
       "genre": "Jazz",
       "id": 9
+    },
+    {
+      "songname": "Il Divo - The Impossible Dream (live)",
+      "singer": "IDJA",
+      "album": "DIVOdsdsdsd",
+      "genre": "Jazz",
+      "id": 12
     }
   ],
   "playList": [
@@ -131,6 +89,11 @@
       "playListName": "Gundu",
       "songID": 4,
       "id": 13
+    },
+    {
+      "songID": 12,
+      "playListName": "Chana",
+      "id": 14
     }
   ],
   "Registration": [

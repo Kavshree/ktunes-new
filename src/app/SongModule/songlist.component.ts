@@ -8,7 +8,10 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
     selector: 'song-list',
     template: `<div>
     <h3>Song List 
-    <button class="btn btn-ktunes float-right" (click)="addSong()">Add song</button>
+    <div class="btn-group pull-right" data-toggle="buttons">
+    <button class="btn btn-outline-success float-right" (click)="addSong()"><i class="fa fa-plus-circle"></i> Add song</button>
+    <button class="btn btn-outline-danger float-right" title="Delete" (click)="deleteSong()"><i class="fa fa-trash-o"></i> Delete Song</button>
+    </div>
     </h3>
     <hr class="ktunesLine" />
 
@@ -29,9 +32,11 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
     <!-- search -->
     
     <div class="card-columns card-deck">
-        <div class="card mb-3" style="min-width: 18rem;" *ngFor="let song of songListData">
-            <div class="card-header" [ngClass]="song.id == currID ? 'active-card' : '' ">{{song.songname}} </div>
-            <div class="card-body">
+        <div class="card mb-3" style="min-width: 18rem; " *ngFor="let song of songListData">
+            <div class="card-header" [ngClass]="song.id == currID ? 'active-card' : '' ">
+              <span class="form-check"><input type="checkbox" class="form-check-input" (change)="songSelected(song.id)"> {{song.songname}} </span>
+            </div>
+            <div class="card-body" >
                 <h5 class="card-title"><label>Singer:</label> {{song.singer}}</h5>
                 <section class="card-text">
                     <p><label>Album: </label> {{song.album}}</p>
@@ -110,17 +115,22 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
         .btn .fa-play:hover, .btn .fa-plus:hover, .btn .fa-pencil-square-o:hover{color: #00bc8c;}
         audio{width: 100%;}
         .active-card {background-color: #00bc8c; }
+        .card { background-size: cover;}
     `]
 })
 
 export class SongListComponent{
-    radioSelected;newPlaylistName="";
+    radioSelected;newPlaylistName="";songCheckboxselected = []
     constructor(private _router: Router, private _service: KTuneService,private modalService: NgbModal) {}
     @ViewChild('player') playerRef: ElementRef; currID=0;
     @ViewChild('content') content: ElementRef;
     songListData; currSong={songname:"", singer:"", album: "",genre:"", songid:"", id:""};
     searchFields=[]; searchField="songname";
     ngOnInit() {
+        this.getSongs()
+    }
+
+    getSongs() {
         this._service.getSongs().subscribe(res => {
             this.songListData = res;
             let songObjArr=this.songListData[0]; let arr=[]
@@ -131,7 +141,6 @@ export class SongListComponent{
                 this.searchFields=arr;
             }
         })
-        
     }
     views = [1,2,3]
     InnerCards = ["card1","card2","card3","card4","card5","card6","card70","card8"];
@@ -215,4 +224,24 @@ export class SongListComponent{
               this.songListData = res;
           })
       }
+
+      songSelected(id) {
+          this.songCheckboxselected.push(id);
+          console.log(this.songCheckboxselected);
+      }
+
+      deleteSong() {
+          if(this.songCheckboxselected.length < 1 ) { alert("Please select song(s) to delete"); return;}
+          console.log("deleting", this.songCheckboxselected);
+
+          this.songCheckboxselected.forEach(item => {
+            this._service.deleteSong(item).subscribe(res => {
+                console.log(res);
+                this.getSongs();
+            }, (err => alert("there was an error while deleting. Please try again later"))) 
+          })
+          
+      }
+
+
 }
