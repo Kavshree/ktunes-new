@@ -60,7 +60,12 @@ export class LoginComponent{
             } else if(!returnedData[0]?.password) {
                this.errormsg="Account Not Registered";
             } else if(returnedData[0]?.password && returnedData[0]?.password == this.loginForm.get('password').value) {
-                alert("login successful!")
+              
+              this._service.setCurrentUser({currUser: returnedData[0]?.id}).subscribe(setcurrres => {
+                alert("login successful!");
+                let val = returnedData[0].id;
+                localStorage.setItem("currUser", JSON.stringify(val) )
+              });
             }
         })
     }

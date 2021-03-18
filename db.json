@@ -151,6 +151,16 @@
       "location": "Toronto",
       "mobilenum": "4373334690",
       "id": 2
+    },
+    {
+      "email": "admin",
+      "password": "admin",
+      "fname": "Srivatsa",
+      "lname": "Chakravarthy",
+      "location": "Toronto",
+      "mobilenum": "4373334690",
+      "id": 3
     }
-  ]
+  ],
+  "CurrentUser": []
 }

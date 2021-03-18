@@ -68,6 +68,10 @@ export class AddSongComponent {
         this._service.getGenres().subscribe(res => {
             this.Genres = res;
         })
+
+        this._service.getCurrentUser().subscribe(res => {
+            alert(`LoggedIn as : ${JSON.stringify(res)} `);
+        })
     }
 
     upload(e) {

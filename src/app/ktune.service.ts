@@ -42,4 +42,16 @@ export class KTuneService {
     getUser(emailObj) {
         return this._http.get(`http://localhost:3000/Registration?email=${emailObj}`);
     }
+
+    setCurrentUser(obj) {
+        return this._http.post(`http://localhost:3000/CurrentUser`, obj)
+    }
+
+    getCurrentUser() {
+        return this._http.get(`http://localhost:3000/CurrentUser`)
+    }
+
+    deleteCurrentUser(user) {
+        return this._http.delete(`http://localhost:3000/CurrentUser/${user}`)
+    }
 }
