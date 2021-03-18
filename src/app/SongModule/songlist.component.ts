@@ -30,9 +30,7 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
     
     <div class="card-columns card-deck">
         <div class="card mb-3" style="min-width: 18rem;" *ngFor="let song of songListData">
-            <div class="card-header" [ngClass]="song.id == currID ? 'active-card' : '' ">{{song.songname}} 
-                <a class="pull-right" [routerLink]="['/SongList/editSong/', song.id]"><i class="fa fa-pencil"></i></a>
-            </div>
+            <div class="card-header" [ngClass]="song.id == currID ? 'active-card' : '' ">{{song.songname}} </div>
             <div class="card-body">
                 <h5 class="card-title"><label>Singer:</label> {{song.singer}}</h5>
                 <section class="card-text">
@@ -41,8 +39,8 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
                 </section>
                 <div class="overlay text-center">
                 <p class="info cursor-pointer btn-group">
-                    <button class="btn" title="add to favourites" (click)="addtoFav(song.id)">
-                        <i class="fa fa-heart-o fa-2x col-lg-2"></i>
+                    <button class="btn" title="Edit" (click)="addtoFav(song.id)">
+                        <i class="fa fa-2x fa-pencil-square-o" [routerLink]="['/SongList/editSong/', song.id]"></i>
                     </button>
                     <button class="btn" title="Play" (click)="play(song.id)">
                         <i class="fa fa-play fa-2x col-lg-2"></i>
@@ -109,7 +107,7 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
   `,
     styles: [`
         .btn .fa-heart-o:hover {color:red;}
-        .btn .fa-play:hover, .btn .fa-plus:hover{color: #00bc8c;}
+        .btn .fa-play:hover, .btn .fa-plus:hover, .btn .fa-pencil-square-o:hover{color: #00bc8c;}
         audio{width: 100%;}
         .active-card {background-color: #00bc8c; }
     `]
